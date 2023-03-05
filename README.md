@@ -284,6 +284,68 @@ docker tag swarm02-web siwakorn2345/swarm02-web:01
 docker push siwakorn2345/swarm02-web:01
 ```
 
+### กำหนดค่าไฟล์ compose.yaml เพื่อนำไป deploy stack ใน portainer
+## ยังไม่สมบูรณ์
+
+```
+version: '3.7'
+
+services:
+  db:
+    image: postgres
+    environment:
+      postgres_user: postgres
+      postgres_password: postgres
+    networks:
+      - default
+    volumes:
+      - db_data:/var/lib/postgresql/data
+  web:
+    image: siwakorn2345/swarm02-web:01
+    networks:
+      - traefik-public
+      - default
+    volumes:
+      - static_data:/usr/src/app/static
+    ports:
+      - "8080:8080"
+    depends_on:
+      - db
+    deploy:
+      replicas: 4
+      labels:
+        - traefik.docker.network=traefik-public
+        - traefik.enable=true
+        - traefik.http.routers.${appname}-https.entrypoints=websecure
+        - traefik.http.routers.${appname}-https.rule=Host("{appname}.xops.ipv9.me")
+        - traefik.http.routers.${appname}-https.tls.certresolver=default
+        - traefik.http.services.${appname}.loadbalancer.server.port=8080
+
+      restart_policy:
+        condition: any
+      update_config:
+        delay: 5s
+        parallelism: 1
+        order: start-first
+volumes:
+  db_data:
+  static_data:
+
+networks:
+  default:
+    driver: overlay
+    attachable: true   
+  traefik-public:
+    external: true
+```
+
+## ยังไม่สมบูรณ์
+
+# Ref example code 
+
+- https://github.com/pitimon/dockerswarm-inhoure?fbclid=IwAR05dUk05KjPAWSfDZs0ecF9RjuXh6w86rTt2IFKUQrwSrFopYEgTj-x6dY
+ 
+
 
 
 
