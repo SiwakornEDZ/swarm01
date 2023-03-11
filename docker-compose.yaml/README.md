@@ -17,14 +17,20 @@ docker login
 ```
 ### ขั้นตอนที่ 3 
 
+## docker depoly
+
+```
+sudo docker compose up -d
+```
+
 ### กำหนด tag ของ images ที่ต้องการ
 
 ```
-docker tag swarm02-web siwakorn2345/swarm02-web:01
+docker tag linuxserver/plex:lastest siwakorn2345/plex:sw06
 ```
  
 ### push images ขึ้น docker hub และเพื่อเรียกใช้้งานใน dockercompose file
 
 ```
-docker push siwakorn2345/swarm02-web:01
+docker push siwakorn2345/plex:sw06
 ```
