@@ -19,7 +19,7 @@
 * กำหนดคำสั่ง CMD เพื่อรัน application ที่ build ได้
 * จากนั้นมี stage อีกหนึ่ง stage ชื่อว่า dev-envs ที่ใช้ builder stage เป็น base image 
 
-ใน stage สุดท้าย นำ base image จาก scratch มาใช้ โดยมีไฟล์เพียงไฟล์เดียวคือไฟล์ backend จาก builder stage ที่อยู่ใน /code/bin/backend มาคัดลอกไปยัง /usr/local/bin/backend ใน image สุดท้าย และกำหนด CMD เพื่อรัน application ที่ build ได้
+ในขั้นตอนสุดท้าย นำ base image จาก scratch มาใช้ โดยมีไฟล์เพียงไฟล์เดียวคือไฟล์ backend จาก builder stage ที่อยู่ใน /code/bin/backend มาคัดลอกไปยัง /usr/local/bin/backend ใน image สุดท้าย และกำหนด CMD เพื่อรัน application ที่ build ได้
 
 ## สร้าง image สำหรับการเตรียม push ขึ้น dockerhub
 
