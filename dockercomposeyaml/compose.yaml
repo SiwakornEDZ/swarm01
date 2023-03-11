@@ -1,18 +1,27 @@
+version: '3.3'
 services:
-  frontend:
-    image: traefik:2.6
-    command: --providers.docker --entrypoints.web.address=:80 --providers.docker.exposedbydefault=false
-    ports:
-      # The HTTP port
-      - "80:80"
-    volumes:
-      # So that Traefik can listen to the Docker events
-      - /var/run/docker.sock:/var/run/docker.sock
-    depends_on:
-      - backend
-  backend:
-    build: backend
-    labels:
-      - "traefik.enable=true"
-      - "traefik.http.routers.go.rule=Path(`/`)"
-      - "traefik.http.services.go.loadbalancer.server.port=80"
+  test-volume:
+    image: siwakorn2345/swarm01-backend:01
+    networks:
+     - webproxy
+    logging:
+      driver: json-file
+    deploy:
+      replicas: 1
+      labels:
+        - traefik.docker.network=webproxy
+        - traefik.enable=true
+        - traefik.http.routers.whale0011-https.entrypoints=websecure
+        - traefik.http.routers.whale0011-https.rule=Host("whale0011.xops.ipv9.me")
+        - traefik.http.routers.whale0011-https.tls.certresolver=default
+        - traefik.http.services.whale0011.loadbalancer.server.port=80
+      resources:
+        reservations:
+          cpus: '0.1'
+          memory: 6M
+        limits:
+          cpus: '0.4'
+          memory: 50M
+networks:
+  webproxy:
+    external: true
