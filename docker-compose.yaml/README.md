@@ -1,4 +1,4 @@
-# อธิบาย docker-compose.yaml
+# อธิบาย compose.yaml
 
 ### เป็นไฟล์ docker-compose ที่ใช้งาน traefik เป็น load balance และ revert proxy
 ### frontend กำหนดโดยใช้ image ของ dockerfile ทำให้ traefik โดยกำหนด port 80 ตรวจหาและเชื่อมต่อไปที่ comtainer ของ dockerในเครือข่ายที่ตั้งไว้
@@ -7,6 +7,19 @@
 ### 1.ใช้สำหรับเปิดใช้บริการ traefik
 ### 2.ใช้กำหนดการเชื่อมต่อสำหรับ frontend ใน directory
 ### 3.ใช้กำหนด port ให้บริการ
+
+# อธิบาย dockerfile
+### Dockerfile นี้เป็นไฟล์สำหรับสร้าง Docker image ของแอปพลิเคชันที่เขียนด้วยภาษา Golang โดยมีขั้นตอนการสร้างดังนี้
+* ใช้ base image ของ golang:1.18-alpine เพื่อสร้าง builder stage
+* กำหนด working directory ไปที่ /code
+* กำหนด environment variables เช่น CGO_ENABLED, GOPATH, GOCACHE
+* คัดลอกไฟล์ go.mod และ go.sum เข้าไปใน container แล้วใช้คำสั่ง go mod download เพื่อดาวน์โหลด dependency ของโปรเจค
+* คัดลอกไฟล์ทั้งหมดเข้าไปใน container
+* ทำการ build แอปพลิเคชันด้วยคำสั่ง go build และนำ output ไปไว้ที่ไฟล์ bin/backend
+* กำหนดคำสั่ง CMD เพื่อรัน application ที่ build ได้
+* จากนั้นมี stage อีกหนึ่ง stage ชื่อว่า dev-envs ที่ใช้ builder stage เป็น base image 
+
+ใน stage สุดท้าย นำ base image จาก scratch มาใช้ โดยมีไฟล์เพียงไฟล์เดียวคือไฟล์ backend จาก builder stage ที่อยู่ใน /code/bin/backend มาคัดลอกไปยัง /usr/local/bin/backend ใน image สุดท้าย และกำหนด CMD เพื่อรัน application ที่ build ได้
 
 ## สร้าง image สำหรับการเตรียม push ขึ้น dockerhub
 
