@@ -2,7 +2,13 @@
 
 - [https://github.com/docker/awesome-compose/tree/master/nginx-golang](https://github.com/docker/awesome-compose/tree/master/nginx-golang)
 
+# Wakatime
+
 - https://wakatime.com/@spcn21/projects/ziszqdtyet
+
+#url(plex)
+
+- https://whale0011.xops.ipv9.me
 
 ## เตรีมการติดตั้ง vm สำหรับการทำ manager และ 2 swarmnode 
 ## สเปค cpu 2 core ram 2GB disk 32 network ipv4 DHCP ipv6 static กำหนด ssh key
@@ -142,6 +148,8 @@ docker swarm init
 docker node ls
 ```
 
+![Image 12-3-2566 BE at 04 43](https://user-images.githubusercontent.com/87377798/224512757-06270fff-e6e9-4edb-b86c-d3bfa97d16ab.jpg)
+
 ## ติดตั้ง  portainer ใน (manager node)
 
 ```
@@ -205,6 +213,8 @@ docker stack deploy -c traefik-host.yml traefik
 
 - traefik.cpedemo.local 
 
+![Image 12-3-2566 BE at 04 48](https://user-images.githubusercontent.com/87377798/224513418-7d9ebf28-42b2-4e2a-8e46-8fa2b748dc24.jpg)
+
 ## ติดตั้ง swarmpit 
 
 ### ขั้นตอน 
@@ -253,6 +263,8 @@ docker service logs swarmpit_app
 
 - http://swarmpit.cpedemo.local
 
+![Image 12-3-2566 BE at 04 48](https://user-images.githubusercontent.com/87377798/224512903-a91bc888-ae17-45ae-b51a-32f1ee07ce44.jpg)
+
 ## สร้าง image สำหรับการเตรียม push ขึ้น dockerhub
 
 ### ขั้นตอนแรก
@@ -278,7 +290,7 @@ docker login
 docker tag swarm02-web siwakorn2345/swarm02-web:01
 ```
  
-### psuh images ขึ้น docker hub และเพื่อเรียกใช้้งานใน dockercompose file
+### push images ขึ้น docker hub และเพื่อเรียกใช้้งานใน dockercompose file
 
 ```
 docker push siwakorn2345/swarm02-web:01
