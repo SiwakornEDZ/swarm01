@@ -8,7 +8,7 @@
 ### 2.ใช้กำหนดการเชื่อมต่อสำหรับ frontend ใน directory
 ### 3.ใช้กำหนด port ให้บริการ
 
-# อธิบาย dockerfile
+# อธิบาย Dockerfile
 ### Dockerfile นี้เป็นไฟล์สำหรับสร้าง Docker image ของแอปพลิเคชันที่เขียนด้วยภาษา Golang โดยมีขั้นตอนการสร้างดังนี้
 * ใช้ base image ของ golang:1.18-alpine เพื่อสร้าง builder stage
 * กำหนด working directory ไปที่ /code
