@@ -136,93 +136,41 @@ sudo usermod -aG docker $USER
 docker ps
 ```
 
-## สร้าง image สำหรับการเตรียม push ขึ้น dockerhub
-
-### ขั้นตอนแรก
-
-### ตรวจเช็ค image ใน docker โดยใช้คำสั่ง
+## code compose บนคลัสเตอร์ xops
 
 ```
-docker images
-```
-
-### ขั้นตอนที่ 2
-
-### login docker โดยใช้  username และ password
-
-```
-docker login
-```
-### ขั้นตอนที่ 3 
-
-### กำหนด tag ของ images ที่ต้องการ
-
-```
-docker tag swarm02-web siwakorn2345/swarm02-web:01
-```
- 
-### push images ขึ้น docker hub และเพื่อเรียกใช้้งานใน dockercompose file
-
-```
-docker push siwakorn2345/swarm02-web:01
-```
-
-### กำหนดค่าไฟล์ compose.yaml เพื่อนำไป deploy stack ใน portainer
-## ยังไม่สมบูรณ์
-
-```
-version: '3.7'
-
+version: '3.3'
 services:
-  db:
-    image: postgres
-    environment:
-      postgres_user: postgres
-      postgres_password: postgres
+  test-volume:
+    image: siwakorn2345/swarm01-backend:01
     networks:
-      - default
-    volumes:
-      - db_data:/var/lib/postgresql/data
-  web:
-    image: siwakorn2345/swarm02-web:01
-    networks:
-      - traefik-public
-      - default
-    volumes:
-      - static_data:/usr/src/app/static
-    ports:
-      - "8080:8080"
-    depends_on:
-      - db
+     - webproxy
+    logging:
+      driver: json-file
     deploy:
-      replicas: 4
+      replicas: 1
       labels:
-        - traefik.docker.network=traefik-public
+        - traefik.docker.network=webproxy
         - traefik.enable=true
-        - traefik.http.routers.${appname}-https.entrypoints=websecure
-        - traefik.http.routers.${appname}-https.rule=Host("{appname}.xops.ipv9.me")
-        - traefik.http.routers.${appname}-https.tls.certresolver=default
-        - traefik.http.services.${appname}.loadbalancer.server.port=8080
-
-      restart_policy:
-        condition: any
-      update_config:
-        delay: 5s
-        parallelism: 1
-        order: start-first
-volumes:
-  db_data:
-  static_data:
-
+        - traefik.http.routers.whale0011-https.entrypoints=websecure
+        - traefik.http.routers.whale0011-https.rule=Host("whale0011.xops.ipv9.me")
+        - traefik.http.routers.whale0011-https.tls.certresolver=default
+        - traefik.http.services.whale0011.loadbalancer.server.port=80
+      resources:
+        reservations:
+          cpus: '0.1'
+          memory: 6M
+        limits:
+          cpus: '0.4'
+          memory: 50M
 networks:
-  default:
-    driver: overlay
-    attachable: true   
-  traefik-public:
+  webproxy:
     external: true
 ```
 
-## ยังไม่สมบูรณ์
+# Link to images on xops.ipv9.me
+
+- https://whale0011.xops.ipv9.me/
 
 # Ref example code 
 
