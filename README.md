@@ -175,7 +175,7 @@ networks:
   webproxy:
     external: true
 ```
-### อธิบาย compose
+### อธิบาย compose ที่ใช้ในการ deploy บนคลัสเตอร์ xops
 
 - [https://github.com/SiwakornEDZ/swarm01/tree/master/compose.yaml](https://github.com/SiwakornEDZ/swarm01/tree/master/compose.yaml)
 
