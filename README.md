@@ -179,7 +179,7 @@ networks:
 
 - [https://github.com/SiwakornEDZ/swarm01/tree/master/compose.yaml](https://github.com/SiwakornEDZ/swarm01/tree/master/compose.yaml)
 
-### อธิบาย dockerfile
+### อธิบาย dockercompose.yaml
 
 - [https://github.com/SiwakornEDZ/swarm01/tree/master/docker-compose.yaml/.docker](https://github.com/SiwakornEDZ/swarm01/tree/master/docker-compose.yaml/.docker)
 
