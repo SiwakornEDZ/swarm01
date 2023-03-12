@@ -10,7 +10,7 @@
 
 - https://whale0011.xops.ipv9.me
 
-
+# ขั้นตอนการติดตั้ง
 <details>
   <summary> กดเพื่อดูขั้นตอนการติดตั้ง vm docker nala package และคำสั่งหลัง clone</summary>
   
