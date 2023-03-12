@@ -141,8 +141,8 @@ docker ps
 ```
 version: '3.3'
 services:
-  plex:
-    image: siwakorn2345/plex:sw06
+  test-volume:
+    image: siwakorn2345/swarm01-backend:01
     networks:
      - webproxy
     logging:
@@ -152,17 +152,17 @@ services:
       labels:
         - traefik.docker.network=webproxy
         - traefik.enable=true
-        - traefik.http.routers.plex888-https.entrypoints=websecure
-        - traefik.http.routers.plex888-https.rule=Host("plex888.xops.ipv9.me")
-        - traefik.http.routers.plex888-https.tls.certresolver=default
-        - traefik.http.services.plex888.loadbalancer.server.port=32400
+        - traefik.http.routers.whale0011-https.entrypoints=websecure
+        - traefik.http.routers.whale0011-https.rule=Host("whale0011.xops.ipv9.me")
+        - traefik.http.routers.whale0011-https.tls.certresolver=default
+        - traefik.http.services.whale0011.loadbalancer.server.port=80
       resources:
         reservations:
           cpus: '0.1'
           memory: 6M
         limits:
           cpus: '0.4'
-          memory: 250M
+          memory: 50M
 networks:
   webproxy:
     external: true
