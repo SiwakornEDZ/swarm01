@@ -1,6 +1,6 @@
 # อธิบาย compose.yaml
 
-### เป็นไฟล์ docker-compose ที่ใช้งาน traefik เป็น load balance และ revert proxy
+### เป็นไฟล์ compose ที่ใช้งาน traefik เป็น load balance และ revert proxy
 ### frontend กำหนดโดยใช้ image ของ dockerfile ทำให้ traefik โดยกำหนด port 80 ตรวจหาและเชื่อมต่อไปที่ comtainer ของ dockerในเครือข่ายที่ตั้งไว้
 ### เพื่อให้ traefik สามารถค้นหา container ของ docker ได้ frontend จึงได้เชื่อมต่อกับ Docker socket (/var/run/docker.sock:/var/run/docker.sock) 
 ### frontend จะขึ้นอยู่กับ backend ซึ่งถูกสร้างจาก Dockerfile ที่อยู่ใน dir/backend backend เปิดใช้งานอยู่ 3ตัวคือ 
