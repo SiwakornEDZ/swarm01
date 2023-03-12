@@ -49,11 +49,11 @@ sudo docker compose up -d
 ### กำหนด tag ของ images ที่ต้องการ
 
 ```
-docker tag linuxserver/plex:lastest siwakorn2345/plex:sw06
+docker tag swarm01-backend siwakorn2345/swarm-backend:01
 ```
  
 ### push images ขึ้น docker hub และเพื่อเรียกใช้้งานใน dockercompose file
 
 ```
-docker push siwakorn2345/plex:sw06
+docker push siwakorn2345/swarm-backend:01
 ```
