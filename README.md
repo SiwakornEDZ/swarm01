@@ -167,6 +167,9 @@ networks:
   webproxy:
     external: true
 ```
+### อธิบาย compose
+
+- [https://github.com/SiwakornEDZ/swarm01/tree/master/compose.yaml](https://github.com/SiwakornEDZ/swarm01/tree/master/compose.yaml)
 
 # Link to images on xops.ipv9.me
 
