@@ -6,7 +6,7 @@
 
 - https://wakatime.com/@spcn21/projects/ziszqdtyet
 
-#url(plex)
+# url(plex)
 
 - https://whale0011.xops.ipv9.me
 
