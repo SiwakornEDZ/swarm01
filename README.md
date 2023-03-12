@@ -12,7 +12,8 @@
 
 <details>
   <summary>กดเพื่อดูขั้นตอนการติดตั้ง vm docker nala package และคำสั่งหลัง clone</summary>
-## เตรีมการติดตั้ง vm สำหรับการทำ manager และ 2 swarmnode 
+  
+## เตรียมมการติดตั้ง vm สำหรับการทำ manager และ 2 swarmnode 
 ## สเปค cpu 2 core ram 2GB disk 32 network ipv4 DHCP ipv6 static กำหนด ssh key
 ## คำสั่งเข้าสิทธิ  root 
 
