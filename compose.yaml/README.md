@@ -6,7 +6,7 @@
 * ส่วน deploy เป็นการกำหนดการ deploy container นี้ ในที่นี้จะ deploy แค่ 1 replica และกำหนด label ของ Traefik 
 * traefik.docker.network=webproxy คือการบอก Traefik ว่า network ของ container นี้คือ webproxy
 * traefik.http.routers.plex888-https.entrypoints=websecure คือการบอก Traefik ว่า router นี้จะใช้ entrypoint เป็น websecure ซึ่งเป็น entrypoint ที่เชื่อมต่อกับ HTTPS
-* traefik.http.routers.plex888-https.rule=Host("plex888.xops.ipv9.me") คือการบอก Traefik ว่าเมื่อมี request มาที่ whale0011.xops.ipv9.me ให้ใช้ router นี้ในการ handle request
+* traefik.http.routers.plex888-https.rule=Host("plex888.xops.ipv9.me") คือการบอก Traefik ว่าเมื่อมี request มาที่ plex888.xops.ipv9.me ให้ใช้ router นี้ในการ handle request
 * traefik.http.routers.plex888-https.tls.certresolver=default คือการบอก Traefik ว่าใช้ certresolver ชื่อ default ในการดึง SSL/TLS certificate สำหรับ HTTPS connection
 * traefik.http.services.plex888.loadbalancer.server.port=80 คือการบอก Traefik ว่า service ที่เชื่อมต่อกับ router นี้จะใช้ port ที่เป็น HTTP (port 32400)
 
