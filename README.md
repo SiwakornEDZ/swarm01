@@ -11,7 +11,7 @@
 - https://whale0011.xops.ipv9.me
 
 <details>
-  <summary>กดเพื่อดูขั้นตอนการติดตั้ง vm docker nala package และคำสั่งหลัง clone</summary>
+  <summary># กดเพื่อดูขั้นตอนการติดตั้ง vm docker nala package และคำสั่งหลัง clone</summary>
   
 ## เตรียมมการติดตั้ง vm สำหรับการทำ manager และ 2 swarmnode 
 ## สเปค cpu 2 core ram 2GB disk 32 network ipv4 DHCP ipv6 static กำหนด ssh key
